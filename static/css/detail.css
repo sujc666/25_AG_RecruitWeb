@@ -1,0 +1,351 @@
+img {
+    max-width: 100%;
+}
+
+/*-----------------------------------------------------------*/
+/*最上面横幅的css*/
+
+/*----------------------------------------------------------*/
+
+/*第一部分的照片，改成社指合照*/
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@500&display=swap');
+
+#bg1 {
+    background-image: url(../picture/hezhao.jpg);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    height: 100vh;
+    font-family: 'Noto Sans SC', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: white;
+}
+
+/* 蒙版层 */
+#bg1 .overlay {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+/* 文本内容定位 */
+#bg1 .inner-title {
+    position: relative;
+    z-index: 1;
+}
+
+#bg1 h1 {
+    font-size: 3rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 0.5em;
+    color: #ffffff;
+}
+
+#bg1 p {
+    font-size: 1.3rem;
+    margin-bottom: 1.5em;
+    color: #f8f8f8;
+}
+
+/* 按钮：绿色边框 & 背景变换 */
+#bg1 .btn {
+    padding: 0.8em 1.6em;
+    border: 2px solid #ffffff;
+    border-radius: 30px;
+    color: #ffffff;
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+#bg1 .btn:hover {
+    background-color: #ffffff;
+    color: #27ae60;
+    border-color: #ffffff;
+}
+
+/* 动画淡入效果 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeInUp 1s ease forwards;
+    opacity: 0;
+}
+
+.fade-in.delay {
+    animation-delay: 0.4s;
+}
+
+.fade-in.delay2 {
+    animation-delay: 0.8s;
+}
+
+/* 响应式适配 */
+@media screen and (max-width: 768px) {
+    #bg1 h1 {
+        font-size: 2rem;
+    }
+
+    #bg1 p {
+        font-size: 1rem;
+    }
+
+    #bg1 .btn {
+        font-size: 0.9rem;
+        padding: 0.6em 1.2em;
+    }
+}
+
+
+/*第一部分表面颜色*/
+.inner-banner::before {
+    background-color: #f6ffdc;
+    opacity: 30%;
+}
+
+.inner-banner .inner-title h3 {
+    color: #9ADA7D;
+    opacity: 80%;
+    font-size: 50px;
+    font-weight: 700;
+}
+
+.inner-banner .inner-title ul li a {
+    color: black;
+}
+
+.inner-banner .inner-title ul li:last-child {
+    color: black;
+}
+
+/*二维码部分*/
+.contact-section {
+    background-color: #f9f9f9;
+    padding: 4rem 1rem;
+    text-align: center;
+}
+
+.contact-section .section-title {
+    font-size: 2.2rem;
+    color: #2ecc71;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.contact-section .section-subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+.qrcode-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+}
+
+.qrcode-card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 1.5rem;
+    width: 380px;
+    transition: transform 0.3s ease;
+}
+
+.qrcode-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.qrcode-card img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.qrcode-card p {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+
+/*-----------------------------------------------------------------*/
+/*第二部分*/
+.second {
+    position: relative;
+}
+
+.banyuan {
+    position: absolute;
+    top: 0;
+    background-color: #AADE92;
+    width: 200px;
+    height: 100px;
+    border-radius: 0 0 100px 100px;
+    opacity: 70%;
+    box-shadow: 0 0 30px #9ADA7D;
+}
+
+.fangxing {
+    z-index: 0;
+    position: absolute;
+    top: 600px;
+    left: 800px;
+    background-color: #f6ffdc;
+    width: 400px;
+    height: 200px;
+    border-radius: 10px;
+    box-shadow: #f6ffdc;
+    opacity: 30%;
+}
+
+.banbanjiao {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    width: 150px;
+    height: 150px;
+    border-radius: 150px 0 0 0;
+    background-color: #cdffb2;
+    box-shadow: 0 0 30px #cdffb2;
+}
+
+.banyuan2 {
+    position: absolute;
+    top: 750px;
+    left: 0;
+    width: 100px;
+    height: 200px;
+    background-color: #d7ffaf;
+    border-radius: 0 100px 100px 0;
+    box-shadow: 0 0 20px #d7ffaf;
+    opacity: 30%;
+}
+
+.service-dtls-content h2 {
+    text-align: center;
+    color: #AADE92;
+}
+
+.common-catagory .catagory li a,
+.common-catagory h3 {
+    color: #AADE92;
+}
+
+.common-catagory .catagory li::before {
+    background-color: #9ADA7D;
+}
+
+/*------------------------------------------------------------------*/
+/*第三部分照片的css*/
+.san-wenzi {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #AADE92;
+    font-size: x-large;
+}
+
+.san-wenzi2 {
+    color: #4ac511;
+    font-size: x-large;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.counter-area {
+    background-color: #f6ffdc;
+    opacity: 80%;
+}
+
+.disan {
+    flex: 0 0 auto;
+    width: 35%;
+    margin: auto auto;
+}
+
+.col-lg-3 {
+    position: relative;
+
+}
+
+.col-lg-3 img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/*---------------------------------------------------------------------*/
+/*轮播图的css*/
+.client-item {
+    background-color: #f6ffdc;
+}
+
+.client-area .client-slider .center .client-item {
+    background-color: #9ADA7D;
+}
+
+.section-title h4 {
+    color: #E8EF6A;
+}
+
+.section-title h2 {
+    color: #AADE92;
+}
+
+.daxiao {
+    height: 400px;
+}
+
+/*----------------------------------------------------------------*/
+.client-area .owl-theme .owl-nav .owl-prev {
+    color: black;
+    background-color: #fff !important;
+}
+
+.client-area .owl-theme .owl-nav .owl-prev:hover {
+    background-color: #fff !important;
+}
+
+.client-area .owl-theme .owl-nav .owl-next {
+    color: black;
+    background-color: #fff !important;
+}
+
+.client-area .owl-theme .owl-nav .owl-next:hover {
+    background-color: #fff !important;
+}
+
+/*---------------------------------------------------------------*/
+/*最下面的按钮的css*/
+.top-btn {
+    background-color: #f6ffdc;
+    color: black;
+    box-shadow: 0 0 15px #f6ffdc !important;
+}
+
+.top-btn:hover {
+    background-color: #9ADA7D;
+}
