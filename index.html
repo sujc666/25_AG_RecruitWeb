@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="static/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="static/css/magnific-popup.min.css">
+    <link rel="stylesheet" href="static/css/animate.min.css">
+    <link rel="stylesheet" href="static/css/boxicons.min.css">
+    <link rel="stylesheet" href="static/css/flaticon.css">
+    <link rel="stylesheet" href="static/css/meanmenu.min.css">
+    <link rel="stylesheet" href="static/css/style_home_about.css">
+    <link rel="stylesheet" href="static/css/responsive.css">
+
+    <title>华中科技大学学生社团指导中心</title>
+
+    <style>
+        /* 主要样式 */
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .logo-section {
+            margin-bottom: 40px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .logo-section img {
+            width: 120px;
+            height: auto;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+        }
+
+        .main-title {
+            color: white;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2rem;
+            margin-bottom: 50px;
+        }
+
+        .navigation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            width: 100%;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .nav-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+            color: #333;
+        }
+
+        .nav-card .icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #aade92, #7bc862);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .nav-card:hover .icon {
+            transform: rotate(360deg);
+            background: linear-gradient(135deg, #7bc862, #aade92);
+        }
+
+        .nav-card h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .nav-card p {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .footer-text {
+            margin-top: 50px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            animation: fadeIn 1s ease-out 0.6s both;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .navigation-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .nav-card {
+                padding: 30px 20px;
+            }
+        }
+
+        /* 动画效果 */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* 背景装饰 */
+        .bg-decoration {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .bg-decoration::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            left: 10%;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .bg-decoration::after {
+            content: '';
+            position: absolute;
+            bottom: 20%;
+            right: 10%;
+            width: 150px;
+            height: 150px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-decoration"></div>
+
+    <div class="main-container">
+        <div class="logo-section">
+            <img src="static/image/AG.png" alt="学生社团指导中心Logo">
+            <h1 class="main-title">华中科技大学</h1>
+            <p class="subtitle">学生社团指导中心</p>
+        </div>
+
+        <div class="navigation-grid">
+            <a href="joinus.html" class="nav-card">
+                <div class="icon">
+                    <i class="bx bx-user-plus"></i>
+                </div>
+                <h3>加入我们</h3>
+                <p>了解招新信息，扫码加入QQ群，开启你的社团之旅。激情澎湃，社团地带，愿我AG，荣耀常在！</p>
+            </a>
+
+            <a href="about.html" class="nav-card">
+                <div class="icon">
+                    <i class="bx bx-info-circle"></i>
+                </div>
+                <h3>关于社指</h3>
+                <p>深入了解学生社团指导中心的发展历程、组织架构和核心理念。</p>
+            </a>
+
+            <a href="department.html" class="nav-card">
+                <div class="icon">
+                    <i class="bx bx-group"></i>
+                </div>
+                <h3>部门介绍</h3>
+                <p>探索各个部门的职能特色，找到最适合你的发展方向和兴趣领域。</p>
+            </a>
+        </div>
+
+        <div class="footer-text">
+            <p>© 2024 华中科技大学学生社团指导中心 | 青春无限，社团精彩</p>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="static/js/jquery-3.5.0.min.js"></script>
+    <script src="static/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // 页面加载动画
+        $(document).ready(function () {
+            // 为卡片添加悬停效果的额外交互
+            $('.nav-card').hover(
+                function () {
+                    $(this).find('.icon').addClass('animate__animated animate__pulse');
+                },
+                function () {
+                    $(this).find('.icon').removeClass('animate__animated animate__pulse');
+                }
+            );
+
+            // 点击卡片时的反馈效果
+            $('.nav-card').click(function () {
+                $(this).addClass('animate__animated animate__heartBeat');
+                setTimeout(() => {
+                    $(this).removeClass('animate__animated animate__heartBeat');
+                }, 1000);
+            });
+        });
+
+        // 添加页面滚动效果（如果需要）
+        $(window).scroll(function () {
+            var scroll = $(window).scrollTop();
+            if (scroll >= 50) {
+                $('.main-container').css('transform', 'translateY(-10px)');
+            } else {
+                $('.main-container').css('transform', 'translateY(0)');
+            }
+        });
+    </script>
+</body>
+
+</html>
