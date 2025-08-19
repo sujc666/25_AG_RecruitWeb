@@ -8,11 +8,6 @@
 
     <link rel="stylesheet" href="static/css/bootstrap.min.css">
 
-    <link rel="stylesheet" href="static/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="static/css/owl.carousel.min.css">
-
-    <link rel="stylesheet" href="static/css/magnific-popup.min.css">
-
     <link rel="stylesheet" href="static/css/animate.min.css">
 
     <link rel="stylesheet" href="static/css/boxicons.min.css">
@@ -25,9 +20,50 @@
 
     <link rel="stylesheet" href="static/css/responsive.css">
 
-    <title>关于社指</title>
+    <title>关于社指 - 华中科技大学学生社团指导中心</title>
 
     <style>
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #e8f5e9;
+            /* 浅绿色背景 */
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loading-progress {
+            width: 80%;
+            max-width: 400px;
+            height: 10px;
+            background-color: #c8e6c9;
+            /* 进度条背景色 */
+            border-radius: 5px;
+            margin-top: 20px;
+            overflow: hidden;
+        }
+
+        .loading-progress-bar {
+            height: 100%;
+            width: 0;
+            background-color: #2e7d32;
+            /* 深绿色进度条 */
+            border-radius: 5px;
+            transition: width 0.3s ease;
+        }
+
+        .loading-image {
+            width: 100px;
+            height: 100px;
+            animation: pulse 1.5s infinite;
+        }
+
         @media (max-width: 768px) {
             .about-area .row {
                 flex-direction: column;
@@ -52,23 +88,33 @@
                 margin-bottom: 30px;
             }
         }
+
+        .main-nav.top-nav {
+            background-color: #aade92 !important;
+            transition: background-color 0.3s ease;
+            /* 平滑过渡效果 */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            /* 可选：添加阴影增强层次感 */
+        }
     </style>
 
 </head>
 
 <body>
 
-    <div class="preloader">
-        <div class="preloader-wave"></div>
+    <div class="loading-overlay">
+        <img src="static/picture/wzz.png" alt="Loading" class="loading-image">
+        <div class="loading-progress">
+            <div class="loading-progress-bar"></div>
+        </div>
     </div>
-
 
     <div class="navbar-area">
 
         <div class="mobile-nav">
             <a href="joinus.html" class="logo">
                 <img src="static/picture/AGlogo.png" height="45px" alt="Logo">
-                <span class="shezhi" id="shezhi" style="font-size: smaller;">社团指导中心</span>
+                <span class="shezhi" id="shezhi" style="font-size: smaller;">学生社团指导中心</span>
             </a>
         </div>
 
@@ -99,7 +145,7 @@
                                     部门介绍
                                 </a>
                             </li>
-                            <li class="nav-item" style="">
+                            <li class="nav-item" style="margin-right: 30px;">
                                 <a href="index.html" class="nav-link" style="font-size: 18px; font-weight: 600;">
                                     <i class='bx bx-home'></i> 返回首页
                                 </a>
@@ -117,22 +163,6 @@
     </div>
 
 
-    <!--<div class="inner-banner inner-bg1">
-        <div class="container">
-            <div class="inner-title text-center">
-                <h3>关于我们</h3>
-                <ul>
-                    <li>
-                        <a href="joinus.html">首页</a>
-                    </li>
-                    <li>
-                        <i class='bx bxs-chevrons-right'></i>
-                    </li>
-                    <li>关于我们</li>
-                </ul>
-            </div>
-        </div>
-    </div>-->
 
 
     <div class="about-area about-max pt-100 pb-70">
@@ -352,14 +382,15 @@
 
     <footer class="footer-area">
         <div class="container" style="
-            padding: 30px;
-            text-align: center;">
+                padding: 40px;
+                text-align: center;">
             <div class="footer-content">
                 <p>© 2025 华中科技大学学生社团指导中心 数字媒体部</p>
                 <p>激情澎湃 社团地带 愿我AG 荣耀常在</p>
             </div>
         </div>
     </footer>
+
 
     <script data-cfasync="false" src="static/js/email-decode.min.js"></script>
     <script src="static/js/jquery-3.5.0.min.js"></script>
@@ -381,6 +412,29 @@
     <script src="static/js/contact-form-script.js"></script>
 
     <script src="static/js/custom.js"></script>
+    <script>
+        // 模拟加载进度
+        document.addEventListener('DOMContentLoaded', function () {
+            const progressBar = document.querySelector('.loading-progress-bar');
+            const loadingOverlay = document.querySelector('.loading-overlay');
+
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += Math.random() * 10;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        loadingOverlay.style.opacity = '0';
+                        setTimeout(() => {
+                            loadingOverlay.style.display = 'none';
+                        }, 300);
+                    }, 300);
+                }
+                progressBar.style.width = progress + '%';
+            }, 100);
+        });
+    </script>
 </body>
 
 </html>

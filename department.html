@@ -7,38 +7,64 @@
     <title>部门介绍 - 华中科技大学学生社团指导中心</title>
     <link rel="stylesheet" href="static/css/boxicons.min.css">
     <style>
-        @media (max-width: 768px) {
-            .inner-title h1 {
-                font-size: 24px;
-                line-height: 1.3;
-            }
-
-            .inner-title p {
-                font-size: 16px;
-            }
-
-            .flex-fill {
-                flex: 0 0 100%;
-                margin-bottom: 20px;
-            }
-
-            .san-wenzi2 {
-                font-size: 18px;
-            }
-
-            .qrcode-wrapper {
-                flex-direction: column;
-            }
-
-            .qrcode-card {
-                margin-bottom: 20px;
-            }
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #e8f5e9;
+            /* 浅绿色背景 */
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
+
+        .loading-progress {
+            width: 80%;
+            max-width: 400px;
+            height: 10px;
+            background-color: #c8e6c9;
+            /* 进度条背景色 */
+            border-radius: 5px;
+            margin-top: 20px;
+            overflow: hidden;
+        }
+
+        .loading-progress-bar {
+            height: 100%;
+            width: 0;
+            background-color: #2e7d32;
+            /* 深绿色进度条 */
+            border-radius: 5px;
+            transition: width 0.3s ease;
+        }
+
+        .loading-image {
+            width: 100px;
+            height: 100px;
+            animation: pulse 1.5s infinite;
+        }
+
     </style>
     <!-- CSS 链接 -->
-    <link rel="stylesheet" href="static/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+
     <link rel="stylesheet" href="static/css/animate.min.css">
+
+    <link rel="stylesheet" href="static/css/boxicons.min.css">
+
+    <link rel="stylesheet" href="static/css/flaticon.css">
+
+    <link rel="stylesheet" href="static/css/meanmenu.min.css">
+
+    <link rel="stylesheet" href="static/css/style_home_about.css">
+
+    <link rel="stylesheet" href="static/css/responsive.css">
+
 
     <style>
         /* 初始状态：白色背景 */
@@ -52,9 +78,6 @@
 
 
         /* 固定导航栏并预留顶部空间 */
-        body {
-            padding-top: 80px;
-        }
 
         .fixed-top {
             position: fixed;
@@ -78,36 +101,6 @@
             background-color: #f5f7fa;
         }
 
-        /* 导航栏样式 */
-        .navbar-area {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .navbar-brand img {
-            height: 60px;
-            transition: all 0.3s ease;
-        }
-
-        .shezhi {
-            font-size: 1.1rem;
-            color: white;
-            margin-left: 10px;
-            font-weight: 500;
-        }
-
-        .nav-link {
-            color: white !important;
-            font-weight: 500;
-            padding: 0.5rem 1.2rem !important;
-            transition: all 0.3s ease;
-        }
-
-        .nav-link:hover,
-        .nav-link.active {
-            color: white !important;
-            transform: translateY(-2px);
-        }
 
         /* 主体内容样式 */
         .section-header {
@@ -408,8 +401,15 @@
 </head>
 
 <body>
-    <div class="preloader">
-        <div class="preloader-wave"></div>
+    <div class="loading-overlay">
+        <img src="static/picture/wzz.png" alt="Loading" class="loading-image">
+        <div class="loading-progress">
+            <div class="loading-progress-bar"></div>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-between flex-wrap">
+        <!-- 三个flex-fill元素保持不变 -->
     </div>
 
 
@@ -418,13 +418,14 @@
 
         <div class="mobile-nav">
             <a href="joinus.html" class="logo">
-
+                <img src="static/picture/AGlogo.png" height="45px" alt="Logo">
+                <span class="shezhi" id="shezhi" style="font-size: smaller;">学生社团指导中心</span>
             </a>
         </div>
 
 
 
-        <div class="main-nav top-nav fixed-top">
+        <div class="main-nav top-nav">
             <div class="container">
                 <nav class="navbar navbar-expand-md navbar-light ">
                     <a class="navbar-brand" href="joinus.html" style="display: flex; align-items: center;">
@@ -445,8 +446,7 @@
                                 </a>
                             </li>
                             <li class="nav-item" style="margin-right: 30px;">
-                                <a href="" class="nav-link active"
-                                    style="font-size: 18px; font-weight: 600; color: red !important;">
+                                <a href="" class="nav-link active" style="font-size: 18px; font-weight: 600;">
                                     部门介绍
                                 </a>
                             </li>
@@ -461,12 +461,10 @@
                                 <img src="./static/picture/vz1.png" alt="vz" width="80px">
                             </span>
                         </div>
-
                     </div>
+                </nav>
             </div>
-            </nav>
         </div>
-    </div>
     </div>
 
 
@@ -525,12 +523,14 @@
                             <div class="dept-info">
                                 <h3>综合事务部</h3>
                                 <div class="dept-desc">
-                                    <p><span class="highlight">综合事务部</span>是社指里兼具 “外联力” 与 “内驱力” 的重要存在。</p>​
-                                    <p>对外，我们承担着社指与其他高校的联络交流工作，搭建起校际沟通的桥梁，让社指的声音能与更多高校呼应。</p>​
-                                    <p>对内，我们的活儿也不少：要为部门内部的聚餐、娱乐敲定合适场所，让大家在忙碌之余能好好欢聚；负责社指的财务工作，把每一笔收支都打理得清清楚楚；打理 611 办公室和仓库，让日常运转井井有条；还得承担部长会议资料准备和年鉴编纂的任务，为社指的规范运行添砖加瓦。</p>​
-                                    <p>此外，部门下设财务组、常务组、外事组和部长助理组。每组都有组长统筹，23 级部员协助，且会有 1-2 位学长学姐一对一带领 24 级新部员熟悉工作。无论是想提升沟通能力，还是想在学生工作中锤炼责任心与耐心，这里都有适合你的空间。</p>​
-                                    <p>如果你想在实践中成长，快来加入我们吧，一起为社指的发展助力！</p>​
-                                    
+                                    <p><span class="highlight">综合事务部</span>是社指里兼具 “外联力” 与 “内驱力” 的重要存在。​</p>
+                                    <p>对外，我们承担着社指与其他高校的联络交流工作，搭建起校际沟通的桥梁，让社指的声音能与更多高校呼应。​</p>
+                                    <p>对内，我们的活儿也不少：要为部门内部的聚餐、娱乐敲定合适场所，让大家在忙碌之余能好好欢聚；负责社指的财务工作，把每一笔收支都打理得清清楚楚；打理 611
+                                        办公室和仓库，让日常运转井井有条；还得承担部长会议资料准备和年鉴编纂的任务，为社指的规范运行添砖加瓦。​
+                                    <p>
+                                    <p>此外，部门下设财务组、常务组、外事组和部长助理组。每组都有组长统筹，23 级部员协助，且会有 1-2 位学长学姐一对一带领 24
+                                        级新部员熟悉工作。无论是想提升沟通能力，还是想在学生工作中锤炼责任心与耐心，这里都有适合你的空间。​
+                                        如果你想在实践中成长，快来加入我们吧，一起为社指的发展助力！​</p>
                                 </div>
                             </div>
                         </div>
@@ -589,13 +589,11 @@
                             <div class="dept-info">
                                 <h3>社团事务部</h3>
                                 <div class="dept-desc">
-                                    <p><span class="highlight">社团事务部</span>下属于社团服务中心，兼具 “外联力” 与 “内驱力” 的重要存在。</p>
-                                    <p>对外，我们承担着社指与其他高校的联络交流工作，搭建起校际沟通的桥梁，让社指的声音能与更多高校呼应。​</p>
-                                    <p>对内，我们的活儿也不少：要为部门内部的聚餐、娱乐敲定合适场所，让大家在忙碌之余能好好欢聚；负责社指的财务工作，把每一笔收支都打理得清清楚楚；打理 611
-                                        办公室和仓库，让日常运转井井有条；还得承担部长会议资料准备和年鉴编纂的任务，为社指的规范运行添砖加瓦。​</p>
-                                    <p>此外，部门下设财务组、常务组、外事组和部长助理组。每组都有组长统筹，23 级部员协助，且会有 1-2 位学长学姐一对一带领 24
-                                        级新部员熟悉工作。无论是想提升沟通能力，还是想在学生工作中锤炼责任心与耐心，这里都有适合你的空间。​
-                                        如果你想在实践中成长，快来加入我们吧，一起为社指的发展助力！​</p>
+                                    <p><span class="highlight">社团事务部</span>下属于社团服务中心，负责协助学生社团处理相关事务。</p>
+                                    <p>在日常工作中，我们负责与各个学生社团进行基础事务的对接，组织学生社团负责人例会的正常开展。​</p>
+                                    <p>统筹并协助学生社团进行年审、评优是社团事务部的头等大事。我们致力于服务好每一个学生社团，与各学生社团携手发展，在工作中有所进步、有所创新，促进校级学生社团健康积极发展。​
+                                    </p>
+                                    <p>社团事务部为每一个TA提供了与各个学生社团及其负责人接触的机会，每一位社事的成员都能在对接过程中提升自己的沟通交流能力和随机应变能力。​</p>
                                 </div>
                             </div>
                         </div>
@@ -722,8 +720,8 @@
 
     <footer class="footer-area">
         <div class="container" style="
-                padding: 30px;
-                text-align: center;">
+                    padding: 40px;
+                    text-align: center;">
             <div class="footer-content">
                 <p>© 2025 华中科技大学学生社团指导中心 数字媒体部</p>
                 <p>激情澎湃 社团地带 愿我AG 荣耀常在</p>
@@ -731,13 +729,26 @@
         </div>
     </footer>
 
-
     <!-- JavaScript 文件 -->
     <script src="static/js/jquery-3.5.0.min.js"></script>
     <script src="static/js/bootstrap.bundle.min.js"></script>
+    <script data-cfasync="false" src="static/js/email-decode.min.js"></script>
+
     <script src="static/js/meanmenu.min.js"></script>
+
+    <script src="static/js/owl.carousel.min.js"></script>
+
+    <script src="static/js/jquery.magnific-popup.min.js"></script>
+
     <script src="static/js/wow.min.js"></script>
 
+    <script src="static/js/jquery.ajaxchimp.min.js"></script>
+
+    <script src="static/js/form-validator.min.js"></script>
+
+    <script src="static/js/contact-form-script.js"></script>
+
+    <script src="static/js/custom.js"></script>
     <script>
         $(document).ready(function () {
             // 部门标签切换功能
@@ -756,6 +767,29 @@
 
             // 动画初始化
             new WOW().init();
+        });
+    </script>
+    <script>
+        // 模拟加载进度
+        document.addEventListener('DOMContentLoaded', function () {
+            const progressBar = document.querySelector('.loading-progress-bar');
+            const loadingOverlay = document.querySelector('.loading-overlay');
+
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += Math.random() * 10;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        loadingOverlay.style.opacity = '0';
+                        setTimeout(() => {
+                            loadingOverlay.style.display = 'none';
+                        }, 300);
+                    }, 300);
+                }
+                progressBar.style.width = progress + '%';
+            }, 100);
         });
     </script>
 </body>

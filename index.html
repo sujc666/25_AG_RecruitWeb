@@ -19,6 +19,144 @@
     <title>华中科技大学学生社团指导中心</title>
 
     <style>
+        /* 新增加载界面样式 - 放在head的style部分 */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .preloader-content {
+            text-align: center;
+            position: relative;
+        }
+
+        .progress-container {
+            width: 80%;
+            max-width: 400px;
+            height: 8px;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            margin: 30px auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, #1565C0, #1976D2, #2196F3);
+            border-radius: 10px;
+            transition: width 0.4s ease;
+            position: relative;
+        }
+
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg,
+                    rgba(255, 255, 255, 0) 0%,
+                    rgba(255, 255, 255, 0.8) 50%,
+                    rgba(255, 255, 255, 0) 100%);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        .loading-stickers {
+            position: absolute;
+            width: 100%;
+            height: 100px;
+            top: -120px;
+        }
+
+        .sticker {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            animation: float 3s infinite ease-in-out;
+        }
+
+        /* .sticker-1 {
+            background-image: url('static/picture/sticker1.png');
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .sticker-2 {
+            background-image: url('static/picture/sticker2.png');
+            left: 30%;
+            animation-delay: 0.5s;
+        }
+
+        .sticker-3 {
+            background-image: url('static/picture/sticker3.png');
+            left: 50%;
+            animation-delay: 1s;
+        }
+
+        .sticker-4 {
+            background-image: url('static/picture/sticker4.png');
+            left: 70%;
+            animation-delay: 1.5s;
+        } */
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(10deg);
+            }
+        }
+
+        .loading-text {
+            color: #1565C0;
+            font-size: 18px;
+            margin-top: 20px;
+            font-weight: bold;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 0.6;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0.6;
+            }
+        }
+
         /* 主要样式 */
         body {
             font-family: 'Microsoft YaHei', sans-serif;
@@ -44,9 +182,8 @@
         }
 
         .logo-section img {
-            width: 170px;
+            width: 120px;
             height: auto;
-            margin-top: 20px;
             margin-bottom: 20px;
             filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
         }
@@ -238,6 +375,22 @@
 </head>
 
 <body>
+    <!-- 修改后的preloader部分 -->
+    <div class="preloader">
+        <div class="preloader-content">
+            <div class="loading-stickers">
+                <div class="sticker sticker-1"></div>
+                <div class="sticker sticker-2"></div>
+                <div class="sticker sticker-3"></div>
+                <div class="sticker sticker-4"></div>
+            </div>
+            <img src="static/image/AG.png" alt="Logo" style="width: 80px; height: auto;">
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <div class="loading-text">正在加载中，请稍候...</div>
+        </div>
+    </div>
     <div class="bg-decoration"></div>
 
     <div class="main-container">
@@ -314,6 +467,48 @@
             }
         });
     </script>
+    <script>
+        // 页面加载进度
+        document.addEventListener('DOMContentLoaded', function () {
+            const progressBar = document.getElementById('progress-bar');
+            const preloader = document.querySelector('.preloader');
+            let progress = 0;
+
+            // 模拟加载进度
+            const interval = setInterval(() => {
+                progress += Math.random() * 15;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        preloader.style.opacity = '0';
+                        setTimeout(() => {
+                            preloader.style.display = 'none';
+                        }, 500);
+                    }, 300);
+                }
+                progressBar.style.width = progress + '%';
+            }, 200);
+
+            // 随机改变加载文字
+            const loadingText = document.querySelector('.loading-text');
+            const texts = [
+                "正在加载中，请稍候...",
+                "加载完成，感谢等待..."
+            ];
+            //注意texts长度相同，否则进度条长度会相应改变
+
+            let textIndex = 0;
+            setInterval(() => {
+                textIndex = (textIndex + 1) % texts.length;
+                loadingText.textContent = texts[textIndex];
+            }, 2000);
+        });
+    </script>
+
+    <!-- 原有JavaScript保持不变 -->
+    <script src="static/js/jquery-3.5.0.min.js"></script>
+    <script src="static/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
