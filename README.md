@@ -1,3 +1,7 @@
+<div align = center>
+<img width="180" height="" alt="AG" src="https://github.com/user-attachments/assets/61df145a-7bd2-43a7-a8ef-3831615da302" />
+</div>
+
 # 华中科技大学学生社团指导中心 2025 招新官网
 
 本项目为华中科技大学学生社团指导中心（AG）2025 年度招新宣传与信息展示网站，包含“加入我们”、“关于社指”、“部门介绍”等页面，适配 PC 和移动端，界面美观，交互友好。
@@ -12,6 +16,7 @@
 - `static/js/`：JavaScript 脚本
 - `static/image/`：LOGO等图片
 - `static/picture/`：贴纸、活动等图片素材
+- `static/WebQrcode/`：网站二维码
 
 ## 主要特性
 
@@ -45,3 +50,5 @@
 
 © 2025 华中科技大学学生社团指导中心 数字媒体部  
 Passion, Community, Glory!
+
+
